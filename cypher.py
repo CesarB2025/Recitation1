@@ -35,6 +35,3 @@ def decrypt(message, password):
 
     return encrypted_message
 
-print(encrypt('Shhh.... This is a secret','IamBond!'))
-print(decrypt(encrypt('Shhh.... This is a secret', 'IamBond!'), 'IamBond!'))
-
