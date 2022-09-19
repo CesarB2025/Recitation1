@@ -3,17 +3,38 @@
 # Recitation 1 - Encryption with a password
 # *******************************************************
 
+import math
 import string
-
 alphabet = string.printable
-ordinal_value = {ch: i for i, ch in enumerate(alphabet)}
+ordinal_value= {ch:i for i, ch in enumerate(alphabet)}
 
 
 def encrypt(message, password):
     encrypted_message = ''
-    pass  # TODO replace this line with your code.
+
+    for index, ch in enumerate(message):
+        pass_ch = password[index%len(password)]
+        key = ordinal_value[pass_ch]
+        ord_of_ch = ordinal_value[ch]
+        shifted_ord_of_ch = (ord_of_ch + key) % len(alphabet)
+        encrypted_ch = alphabet[shifted_ord_of_ch]
+        encrypted_message += encrypted_ch
+    return encrypted_message
 
 
 def decrypt(message, password):
-    decrypted_message = ''
-    pass  # TODO replace this line with your code.
+    encrypted_message = ''
+
+    for index, ch in enumerate(message):
+        pass_ch = password[index%len(password)]
+        key = ordinal_value[pass_ch]
+        ord_of_ch = ordinal_value[ch]
+        shifted_ord_of_ch = (ord_of_ch - key) % len(alphabet)
+        encrypted_ch = alphabet[shifted_ord_of_ch]
+        encrypted_message += encrypted_ch
+
+    return encrypted_message
+
+print(encrypt('Shhh.... This is a secret','IamBond!'))
+print(decrypt(encrypt('Shhh.... This is a secret', 'IamBond!'), 'IamBond!'))
+
