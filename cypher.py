@@ -30,6 +30,5 @@ def decrypt(message, password):
         shifted_ord_of_ch = (ord_of_ch - key) % len(alphabet)
         encrypted_ch = alphabet[shifted_ord_of_ch]
         encrypted_message += encrypted_ch
-
     return encrypted_message
 
